@@ -1,0 +1,42 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Start') {
+            steps {
+                echo "Pipeline Started"
+            }
+        }
+
+        stage('Build') {
+            steps {
+                echo "Building the code..."
+            }
+        }
+
+        stage('Tests Only On Master') {
+            when { branch 'master' }
+            steps {
+                echo "Running tests only on master branch"
+            }
+        }
+
+        stage('Unit Test') {
+            steps {
+                echo "Running Unit Tests..."
+            }
+        }
+
+        stage('Integration Test') {
+            steps {
+                echo "Running Integration Tests..."
+            }
+        }
+
+        stage('End') {
+            steps {
+                echo "Pipeline Completed"
+            }
+        }
+    }
+}
